@@ -101,167 +101,71 @@ import mainimage from "../assets/images/video-img.jpg"; // 750*500
 const sectiondata = {
     headermenu: [
         {
-            title: 'Home',
+            title: 'HOME',
             path: '/',
-            dropdown: [
-                {
-                    title: 'Home One',
-                    path: '/'
-                },
-                {
-                    title: 'Home Two',
-                    path: '/index2'
-                },
-                {
-                    title: 'Home Three',
-                    path: '/index3'
-                },
-                {
-                    title: 'Home Four',
-                    path: '/index4'
-                },
-                {
-                    title: 'Home Five',
-                    path: '/index5'
-                }
-            ]
+       
         },
         {
-            title: 'categories',
-            path: '/all-categories',
-            dropdown: [
-                {
-                    title: 'all categories',
-                    path: '/all-categories'
-                },
-                {
-                    title: 'all locations',
-                    path: '/all-locations'
-                },
-                {
-                    title: 'top places',
-                    path: '/top-place'
-                }
-            ]
+            title: 'ABOUT US',
+            path: '/about',
+           
         },
         {
-            title: 'listings',
-            path: '/listing-grid',
-            dropdown: [
-                {
-                    title: 'listing grid',
-                    path: '/listing-grid'
-                },
-                {
-                    title: 'map view',
-                    path: '/list-map-view'
-                },
-                {
-                    title: 'map view 2',
-                    path: '/list-map-view2'
-                },
-                {
-                    title: 'listing list',
-                    path: '/listing-list'
-                },
-                {
-                    title: 'left sidebar',
-                    path: '/list-left-sidebar'
-                },
-                {
-                    title: 'right sidebar',
-                    path: '/list-right-sidebar'
-                },
-                {
-                    title: 'listing details',
-                    path: '/listing-details'
-                },
-                {
-                    title: 'add listing',
-                    path: '/add-listing/new'
-                }
-            ]
+            title: 'SUBSCRIPTIONS',
+            path: '/subscriptions',
+           
         },
         {
-            title: 'pages',
-            path: '/user-profile',
-            dropdown: [
-                {
-                    title: 'user profile',
-                    path: '/user-profile'
-                },
-                {
-                    title: 'top authors',
-                    path: '/top-author'
-                },
-                {
-                    title: 'dashboard',
-                    path: '/dashboard'
-                },
-                {
-                    title: 'booking',
-                    path: '/booking'
-                },
-                {
-                    title: 'booking confirmation',
-                    path: '/booking-confirmation'
-                },
-                {
-                    title: 'invoice',
-                    path: '/invoice'
-                },
-                {
-                    title: 'pricing',
-                    path: '/pricing'
-                },
-                {
-                    title: 'about',
-                    path: '/about'
-                },
-                {
-                    title: 'faq',
-                    path: '/faq'
-                },
-                {
-                    title: 'contact',
-                    path: '/contact'
-                },
-                {
-                    title: '404 page',
-                    path: '/page-404'
-                },
-                {
-                    title: 'recover pass',
-                    path: '/recover'
-                }
-            ]
+            title: 'ACCUPUNCTURE',
+            path: '/acupuncture',
+           
         },
         {
-            title: 'blog',
-            path: '/blog-full-width',
-            dropdown: [
-                {
-                    title: 'full width',
-                    path: '/blog-full-width'
-                },
-                {
-                    title: 'blog grid',
-                    path: '/blog-grid'
-                },
-                {
-                    title: 'left sidebar',
-                    path: '/blog-left-sidebar'
-                },
-                {
-                    title: 'right sidebar',
-                    path: '/blog-right-sidebar'
-                },
-                {
-                    title: 'blog detail',
-                    path: '/blog-single'
-                }
-            ]
+            title: 'FORMULAS',
+            path: '/formulas',
+           
         },
+        {
+            title: 'MATERIA MEDICA',
+            path: '/materiamedica',
+           
+        },
+        {
+            title: 'CLINICS',
+            path: '/clinics',
+           
+        },
+        {
+            title: 'FORUMS',
+            path: '/forums',
+           
+        },
+        {
+            title: 'CONTACT',
+            path: '/contact',
+           
+        },
+        {
+            title: 'LOGIN',
+             dropdown: [
+                {
+                    title: 'Login',
+                    path: '/login'
+                },
+                {
+                    title: 'Register',
+                    path: '/loginregister'
+                },
+                {
+                    title: 'Password Recovery',
+                    path: ''
+                }
+              
+            ]
+           
+        },
+        
+        
     ],
     herobanners: {
         banner1: {
