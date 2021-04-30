@@ -31,6 +31,8 @@ import BookingConfirmation from "./pages/dashboard/BookingConfirmation";
 import Invoice from "./pages/dashboard/Invoice";
 import PricingPlan from "./pages/PricingPlan";
 import About from "./pages/About";
+import Acupuncture from "./pages/Acupuncture";
+import acupuncturePoint from "./pages/acupuncturePoint";
 import Faq from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import RecoverPassword from "./pages/RecoverPassword";
@@ -62,9 +64,11 @@ const App = () => {
           <Switch>
             <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
               <AppRoute path="/index2" component={Home2} />
-              <AppRoute path="/index3" component={Home3} />
+              <AppRoute path="/index3" component={Home3} />                          
               <AppRoute path="/index4" component={Home4} />
               <AppRoute path="/index5" component={Home5} />
+              <AppRoute path="/acupuncture" component={Acupuncture}/>  
+              <AppRoute path="/acupuncturePoint" component={acupuncturePoint}/>               
               <AppRoute path="/all-categories" component={AllCategories} />
               <AppRoute path="/all-locations" component={AllLocations} />
               <AppRoute path="/top-place" component={TopPlaces} />
