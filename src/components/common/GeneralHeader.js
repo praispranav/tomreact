@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react'
 import Navbar from './Navbar'
-import HeaderAuthorAccess from '../other/account/HeaderAuthorAccess'
 import Logo from './Logo'
-import logosrc from '../../assets/images/logo.png'
+import logosrc from '../../assets/images/logoNew.jpg'
 
 export default function GeneralHeader() {
     useEffect(() => {
@@ -34,8 +33,7 @@ export default function GeneralHeader() {
                                     {/* Navbar */}
                                     <Navbar />
 
-                                    {/* Author Access */}
-                                    <HeaderAuthorAccess />
+                        
                                 </div>
                             </div>
                         </div>
