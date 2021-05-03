@@ -80,8 +80,17 @@ function Acupuncture() {
                 </div>
             </section>
 
-       
+             <section className="about-area padding-bottom-100px">
+                <div className="container">
+                <h3><span class="theme-color">Select list of acu-points starting with ...</span></h3>
+			<ul class="tags-list">
+			<li><a class="active" href="/acupuncturePoint">All </a><a href="/acupuncturePoint">A</a><a href="/acupuncturePoint"> B</a><a href="/acupuncturePoint"> C</a><a href="/acupuncturePoint"> D</a><a href="/acupuncturePoint"> E</a><a href="/acupuncturePoint"> F</a><a href="/acupuncturePoint"> G</a><a href="/acupuncturePoint"> H</a></li>
+          
+            </ul>
 
+            
+                </div>
+            </section>
            
          
 
