@@ -5,8 +5,7 @@ import CheckIcon from "@material-ui/icons/Check"
 export default function BlogFullWidthList(props) {
     const modelData = props.modelData
     return (
-        <>{console.log("Model", props)}
-                        {/* <li> {modelData.letter_2}</li> */}
+        <>
                         <li className="myliststyle"><CheckIcon style={{color:"red", marginRight:"20px"}} />English : {modelData.english}</li>
                         <li className="myliststyle"><CheckIcon style={{color:"red", marginRight:"20px"}} />Korean : {modelData.korean}</li>
                         <li className="myliststyle"><CheckIcon style={{color:"red", marginRight:"20px"}} />Japanese : {modelData.japanese}</li>
@@ -15,7 +14,6 @@ export default function BlogFullWidthList(props) {
                         <li className="myliststyle"><CheckIcon style={{color:"red", marginRight:"20px"}} />Five Elements : {modelData.fiveElement}</li>
                         <li className="myliststyle"><CheckIcon style={{color:"red", marginRight:"20px"}} />Horary Cycle {modelData.horarycycle}</li>
                         <li className="myliststyle"><CheckIcon style={{color:"red", marginRight:"20px"}} />Functionality : {modelData.functionality}</li>
-                        {/* <li className="myliststyle"><CheckIcon style={{color:"red", marginRight:"20px"}} />Letter 1 : {modelData.letter_1}</li> */}
                         <li className="myliststyle"><CheckIcon style={{color:"red", marginRight:"20px"}} />Name : {modelData.name}</li>
                         <li className="myliststyle"><CheckIcon style={{color:"red", marginRight:"20px"}} />PinyIn : {modelData.pinyin}</li>
                         <li className="myliststyle"><CheckIcon style={{color:"red", marginRight:"20px"}} />Meridian : {modelData.meridian}</li><br/>

@@ -25,7 +25,6 @@ function BlogFullWidthItems(){
             axios.get(url,{signal: signal})
             .then((res)=>{
                 setstate(res.data)
-                console.log(res.data)
                 setIsLoading(false)
 
             } )
@@ -38,10 +37,9 @@ function BlogFullWidthItems(){
 
     const handleClick = (event)=> {
         setIsModelOpen(true)
-        console.log("hello this is Model data")
         setModelData(event)
     }
-    const Array = state != null ?  state.map((item)=> <div onClick={()=> handleClick(item)}><BlogFullWidthArray 
+    const Array = state != null ?  state.map((item)=> <div key={item.name} onClick={()=> handleClick(item)}><BlogFullWidthArray 
         name={item.name} 
         english={item.english}
          /> </div>) : "Loading...." ;
@@ -50,7 +48,7 @@ function BlogFullWidthItems(){
         
 
         if(context.state.activeFilter.length > 5){
-            return it.meridian == context.state.activeFilter
+            return it.meridian === context.state.activeFilter
         }
         else{
             return it.name.includes(context.state.activeFilter)
@@ -61,7 +59,7 @@ function BlogFullWidthItems(){
     ).map((item)=>
         <div onClick={()=> handleClick(item)}>
 
-            <BlogFullWidthArray keys={item._id}
+            <BlogFullWidthArray key={item.name}
             name={item.name} 
             english={item.english}
             handleClick={(event)=> handleClick(event)} /> 
@@ -78,7 +76,6 @@ function BlogFullWidthItems(){
     })
     return(
         <>
-        {/* {console.log("NewList",newList)} */}
         <div style={{position:"fixed", right:'10px', top:"20%"}}>
             
             <MeridianHandler meridian={newList} />

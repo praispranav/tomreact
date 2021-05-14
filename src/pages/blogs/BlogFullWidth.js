@@ -12,8 +12,10 @@ import ScrollTopBtn from "../../components/common/ScrollTopBtn";
 import bg from "../../assets/images/custom/bg.jpg"
 
 import flag1 from "../../assets/images/custom/flag1.jpg"
+import { UserContext } from '../../App';
 
 function BlogFullWidth() {
+    const context = useContext(UserContext)
     return (
         <main className="blog-fullwidth-page">
             {/* Header */}
@@ -47,6 +49,10 @@ function BlogFullWidth() {
                 </div>
             </section>
             <Pagination />
+            <br />
+            <div style={{textAlign:"center"}}>
+                <p>Active Filter: {context.state.activeFilter}</p>
+            </div>
             <section className="blog-grid padding-top-40px padding-bottom-100px">
                 <div className="container">
                     <div className="row">
