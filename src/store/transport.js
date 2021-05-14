@@ -97,7 +97,6 @@ import about2img from "../assets/images/img2.jpg"; //389*259
 import mainimage from "../assets/images/video-img.jpg"; // 750*500
 
 
-
 const sectiondata = {
     headermenu: [
         {
@@ -107,158 +106,36 @@ const sectiondata = {
                 {
                     title: 'Home One',
                     path: '/'
-                },
-                {
-                    title: 'Home Two',
-                    path: '/index2'
-                },
-                {
-                    title: 'Home Three',
-                    path: '/index3'
-                },
-                {
-                    title: 'Home Four',
-                    path: '/index4'
-                },
-                {
-                    title: 'Home Five',
-                    path: '/index5'
-                }
+                }                
             ]
         },
         {
-            title: 'categories',
+            title: 'OBC',
             path: '/all-categories',
-            dropdown: [
-                {
-                    title: 'all categories',
-                    path: '/all-categories'
-                },
-                {
-                    title: 'all locations',
-                    path: '/all-locations'
-                },
-                {
-                    title: 'top places',
-                    path: '/top-place'
                 }
             ]
         },
         {
-            title: 'listings',
+            title: 'Transports',
             path: '/listing-grid',
-            dropdown: [
-                {
-                    title: 'listing grid',
-                    path: '/listing-grid'
-                },
-                {
-                    title: 'map view',
-                    path: '/list-map-view'
-                },
-                {
-                    title: 'map view 2',
-                    path: '/list-map-view2'
-                },
-                {
-                    title: 'listing list',
-                    path: '/listing-list'
-                },
-                {
-                    title: 'left sidebar',
-                    path: '/list-left-sidebar'
-                },
-                {
-                    title: 'right sidebar',
-                    path: '/list-right-sidebar'
-                },
-                {
-                    title: 'listing details',
-                    path: '/listing-details'
-                },
-                {
-                    title: 'add listing',
-                    path: '/add-listing/new'
                 }
             ]
         },
         {
-            title: 'pages',
+            title: 'Companies',
             path: '/user-profile',
-            dropdown: [
-                {
-                    title: 'user profile',
-                    path: '/user-profile'
-                },
-                {
-                    title: 'top authors',
-                    path: '/top-author'
-                },
-                {
-                    title: 'dashboard',
-                    path: '/dashboard'
-                },
-                {
-                    title: 'booking',
-                    path: '/booking'
-                },
-                {
-                    title: 'booking confirmation',
-                    path: '/booking-confirmation'
-                },
-                {
-                    title: 'invoice',
-                    path: '/invoice'
-                },
-                {
-                    title: 'pricing',
-                    path: '/pricing'
-                },
-                {
-                    title: 'about',
-                    path: '/about'
-                },
-                {
-                    title: 'faq',
-                    path: '/faq'
-                },
-                {
-                    title: 'contact',
-                    path: '/contact'
-                },
-                {
-                    title: '404 page',
-                    path: '/page-404'
-                },
-                {
-                    title: 'recover pass',
-                    path: '/recover'
-                }
             ]
         },
         {
-            title: 'blog',
+            title: 'Forums',
             path: '/blog-full-width',
-            dropdown: [
-                {
-                    title: 'full width',
-                    path: '/blog-full-width'
-                },
-                {
-                    title: 'blog grid',
-                    path: '/blog-grid'
-                },
-                {
-                    title: 'left sidebar',
-                    path: '/blog-left-sidebar'
-                },
-                {
-                    title: 'right sidebar',
-                    path: '/blog-right-sidebar'
-                },
-                {
-                    title: 'blog detail',
-                    path: '/blog-single'
+                }
+            ]
+        },
+		
+        {
+            title: 'About Us',
+            path: '/blog-full-width',
                 }
             ]
         },

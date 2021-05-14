@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react'
 import Navbar from './Navbar'
+import HeaderAuthorAccess from '../other/account/HeaderAuthorAccess'
 import Logo from './Logo'
-import logosrc from '../../assets/images/logoNew.jpg'
+// import logosrc from '../../assets/images/logo.png'
+import logosrc from '../../assets/images/custom/logo.png'
 
 export default function GeneralHeader() {
     useEffect(() => {
@@ -27,13 +29,14 @@ export default function GeneralHeader() {
                                 <div className="menu-full-width">
                                     {/* Logo */}
                                     <div className="logo">
-                                        <Logo url={logosrc} />
+                                        <Logo url={logosrc}/>
                                     </div>
 
                                     {/* Navbar */}
                                     <Navbar />
 
-                        
+                                    {/* Author Access */}
+                                    <HeaderAuthorAccess />
                                 </div>
                             </div>
                         </div>

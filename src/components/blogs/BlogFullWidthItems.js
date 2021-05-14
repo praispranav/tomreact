@@ -1,46 +1,112 @@
-import React from 'react';
-import {Link} from "react-router-dom";
 
-function BlogFullWidthItems({blitems}) {
-    return (
+import React,{ useState,useEffect, useContext } from 'react';
+import { UserContext } from "../../App"
+import axios from "axios"
+import BlogFullWidthArray from "./BlogFullWidthArray"
+import BlogFullWidthList from "./BlogFullWidthList"
+import MeridianHandler from "./MeridianHandler"
+
+import CloseIcon from "@material-ui/icons/Close"
+import Typography from "@material-ui/core/Typography"
+
+function BlogFullWidthItems(){
+    const [ isLoading, setIsLoading ] = useState(true)
+    const [ state, setstate ] = useState([])
+    const [ isModelOpen , setIsModelOpen ] = useState(false)
+    const [ modelData , setModelData ] = useState([])
+    const url = 'http://itransportindex.com:4500/api/acupunctures'
+    const [ error , seterror ] = useState(false)
+    const context = useContext(UserContext)
+
+    useEffect(()=>{
+        const controller = new AbortController();
+        const signal = controller.signal
+        
+            axios.get(url,{signal: signal})
+            .then((res)=>{
+                setstate(res.data)
+                setIsLoading(false)
+
+            } )
+            .catch((err)=> seterror(true))
+        
+        return()=>{
+            controller.abort()
+        }
+    },[])
+
+    const handleClick = (event)=> {
+        setIsModelOpen(true)
+        setModelData(event)
+    }
+    const Array = state != null ?  state.map((item)=> <div key={item.name} onClick={()=> handleClick(item)}><BlogFullWidthArray 
+        name={item.name} 
+        english={item.english}
+         /> </div>) : "Loading...." ;
+
+    const FilteredArray = state != null ?  state.filter((it)=>{
+        
+
+        if(context.state.activeFilter.length > 5){
+            return it.meridian === context.state.activeFilter
+        }
+        else{
+            return it.name.includes(context.state.activeFilter)
+        }
+    }
+
+
+    ).map((item)=>
+        <div onClick={()=> handleClick(item)}>
+
+            <BlogFullWidthArray key={item.name}
+            name={item.name} 
+            english={item.english}
+            handleClick={(event)=> handleClick(event)} /> 
+        </div> ) : "Loading...." ;
+    
+    const FilterActive = context.state.activeFilter === 'all' ? Array : FilteredArray
+    //test
+
+    var newList = []
+    state.forEach((value)=>{
+        if(newList.indexOf(value.meridian) == -1){
+            newList.push(value.meridian)
+        }
+    })
+    return(
         <>
-            {blitems.map((item, i) => {
-                return (
-                    <div className="card-item blog-card" key={i}>
-                        <Link to={item.titleLink} className="card-image-wrap">
-                            <div className="card-image">
-                                <img src={item.img} alt="Blog Full Width" className="card__img" />
-                            </div>
-                        </Link>
-                        <div className="card-content pl-0 pr-0">
-                            <Link to={item.titleLink} className="card-title">
-                                {item.title}
-                            </Link>
-                            <ul className="card-meta pl-0 d-flex justify-content-between align-items-center mt-2">
-                                <li>{item.date} - <Link to={item.metaLink} className="tag__text">{item.meta}</Link></li>
-                                <li><Link to="#">{item.likes} Likes</Link></li>
-                            </ul>
-                            <p className="card-sub mt-3">
-                                {item.desc}
-                            </p>
-                            <ul className="post-author d-flex align-items-center justify-content-between mt-3">
-                                <li>
-                                    <img src={item.authorImg} alt="Author" />
-                                    <span className="by__text"> By</span>
-                                    <span> {item.author}</span>
-                                </li>
-                                <li>
-                                    <Link to={item.readmoreLink} className="blog__btn">
-                                        {item.readmore}
-                                    </Link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                )
-            })}
+        <div style={{position:"fixed", right:'10px', top:"20%"}}>
+            
+            <MeridianHandler meridian={newList} />
+        </div>
+        
+        <div style={ isLoading ? {display:"block", textAlign:"center"} : {display:"none"}}>
+                <div className="loading"></div>
+            <h1>Loading .....</h1>
+        </div>
+        
+        <div style={error ? {display:"block", textAlign:"center"}: {display:"none"}}>
+            Sorry An error Occured While Loading Data....Please Refresh
+        </div>
+        <div className="custom-model" style={isModelOpen ? {display:"block", transition:"1s"}: {display:"none",  transition:"1s"}}>
+            <div className="custom-model-box">
+            <div style={{width:"100%", textAlign:"right"}}>
+                <CloseIcon fontSize="large" style={{textAlign:"right"}} onClick={()=> setIsModelOpen(false)} />
+
+            </div>
+                    <ul>
+                    <Typography variant="h6">
+                        <BlogFullWidthList modelData={modelData} />
+                    </Typography>
+                    </ul>
+            </div>
+        </div>
+        <div className="array-parent">
+            {FilterActive}
+        </div>
         </>
-    );
+    )
 }
 
-export default BlogFullWidthItems;
+export default React.memo(BlogFullWidthItems);
