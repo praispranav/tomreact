@@ -43,6 +43,7 @@ import BlogRightSidebar from "./pages/blogs/BlogRightSidebar";
 import BlogDetail from "./pages/blogs/BlogDetail";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Forums from "./pages/Forums";
 import Error from "./pages/Error";
 
 
@@ -64,11 +65,11 @@ const App = () => {
           <Switch>
             <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
               <AppRoute path="/index2" component={Home2} />
-              <AppRoute path="/index3" component={Home3} />                          
+              <AppRoute path="/index3" component={Home3} />
               <AppRoute path="/index4" component={Home4} />
               <AppRoute path="/index5" component={Home5} />
-              <AppRoute path="/acupuncture" component={Acupuncture}/>  
-              <AppRoute path="/acupuncturePoint" component={acupuncturePoint}/>               
+              <AppRoute path="/acupuncture" component={Acupuncture}/>
+              <AppRoute path="/acupuncturePoint" component={acupuncturePoint}/>
               <AppRoute path="/all-categories" component={AllCategories} />
               <AppRoute path="/all-locations" component={AllLocations} />
               <AppRoute path="/top-place" component={TopPlaces} />
@@ -98,6 +99,7 @@ const App = () => {
               <AppRoute path="/blog-single" component={BlogDetail} />
               <AppRoute path="/login" component={Login} />
               <AppRoute path="/sign-up" component={SignUp} />
+              <AppRoute path="/forums" component={Forums} />
               <AppRoute component={Error} />
           </Switch>
         )} />
