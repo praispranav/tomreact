@@ -5,6 +5,7 @@ import { AiOutlineUser } from 'react-icons/ai'
 import {Link} from "react-router-dom";
 import Button from "../../common/Button";
 import userimg from '../../../assets/images/team1.jpg'
+import WidgetSearchTwo from '../../sidebars/widgets/WidgetSearchTwo';
 
 export default function HeaderAuthorAccess() {
     const [AuthorAccessOpen, setAuthorAccessOpen] = useState(false)
@@ -19,9 +20,7 @@ export default function HeaderAuthorAccess() {
                         <Link to="/sign-up">Sign up</Link>
                     </li>
                     <li>
-                        <Button text="add listing" url="/add-listing/new" >
-                            <FiPlusCircle />
-                        </Button>
+                        <WidgetSearchTwo />
                     </li>
                 </ul>
                 <div className="side-user-menu-open" onClick={() => setAuthorAccessOpen(!AuthorAccessOpen)}>
