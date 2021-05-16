@@ -19,10 +19,10 @@ function NewsLetter({newsLetterContent}) {
                     dragConstraints={constraintsRef} 
                     style={{}} className="mynewsletter">
                  <div className="row" style={{alignItems:"center"}}>
-                    <div className="col-lg-10">
+                    <div className="col-lg-9">
                         <TextField id="standard-basic" label="Subscribe" style={{width:"100%"}}/>
                     </div>
-                    <div className="col-lg-2" style={{textAlign:"center"}}>
+                    <div className="col-lg-3" style={{textAlign:"center"}}>
                         <Button style={{border:"2px solid white", background:"black",
                             marginLeft:"-20px",marginTop:"1em",
                             color:"white", borderRadius:"30px", padding:"0.6em 1em",

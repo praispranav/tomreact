@@ -1,49 +1,16 @@
 
-import React,{ useState,useEffect, useContext } from 'react';
+import React,{ useContext } from 'react';
 import { UserContext } from "../../App"
-import axios from "axios"
 import BlogFullWidthArray from "./BlogFullWidthArray"
-import BlogFullWidthList from "./BlogFullWidthList"
 import MeridianHandler from "./MeridianHandler"
-import { useHistory } from "react-router-dom"
 import { Link } from "react-router-dom"
+import withHOC from './withHOC';
 
 
-function BlogFullWidthItems(){
-    const [ isLoading, setIsLoading ] = useState(true)
-    const [ state, setstate ] = useState([])
-    const [ isModelOpen , setIsModelOpen ] = useState(false)
-    const [ modelData , setModelData ] = useState([])
-    const url = 'http://itransportindex.com:4500/api/acupunctures'
-    const [ error , seterror ] = useState(false)
+function BlogFullWidthItems(props){
+    const { isLoading, state, error } = props
     const context = useContext(UserContext)
-    const [ handleErr , sethandleErr ] = useState(1)
 
-    useEffect(()=>{
-        const controller = new AbortController();
-        const signal = controller.signal
-        
-            if(handleErr === 1){
-                axios.get(url,{signal: signal})
-                .then((res)=>{
-                    setstate(res.data)
-                    setIsLoading(false)
-                    sethandleErr(0)
-                    console.log("hello")
-    
-                } )
-                .catch((err)=> seterror(true))
-            }
-        
-        return()=>{
-            controller.abort()
-        }
-    },[])
-
-    // const handleClick = (event)=> {
-    //     setIsModelOpen(true)
-    //     setModelData(event)
-    // }
     const Array = state != null ?  state.map((item)=> <Link to={`/acupuncture/${item.name}`}>
             <BlogFullWidthArray 
                 name={item.name} 
@@ -51,8 +18,6 @@ function BlogFullWidthItems(){
          /> </Link>) : "Loading...." ;
 
     const FilteredArray = state != null ?  state.filter((it)=>{
-        
-
         if(context.state.activeFilter.length > 5){
             return it.meridian === context.state.activeFilter
         }
@@ -60,11 +25,8 @@ function BlogFullWidthItems(){
             return it.name.includes(context.state.activeFilter)
         }
     }
-
-
     ).map((item)=>
         <Link to={`/acupuncture/${item.name}`}> 
-
             <BlogFullWidthArray key={item._id}
             name={item.name} 
             english={item.english} /> 
@@ -103,4 +65,4 @@ function BlogFullWidthItems(){
     )
 }
 
-export default React.memo(BlogFullWidthItems);
+export default withHOC(React.memo(BlogFullWidthItems));

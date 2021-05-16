@@ -1,18 +1,17 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState, useContext} from 'react';
 import ListingDetailsComments from "../contact/ListingDetailsComments";
 import BlogCommentFields from "./BlogCommentFields";
-import BlogBlockquote from "./BlogBlockquote";
 import {Link} from "react-router-dom";
-import CheckIcon from "@material-ui/icons/Check"
 import BlogTags from "./BlogTags";
 import BlogShare from "./BlogShare";
 import sectiondata from "../../store/store";
-import BlogFullWidthList from './BlogFullWidthList';
 import Typography from "@material-ui/core/Typography";
 import {motion } from "framer-motion"
 
-import axios from "axios"
 import QRCode from "react-qr-code"
+import CheckIcon from "@material-ui/icons/Check"
+import withHOC from "./withHOC"
+import { UserContext } from "../../App"
 
 const CustomNav = (props) =>{
     return(
@@ -34,35 +33,11 @@ const CustomNav = (props) =>{
 }
 
 function BlogDetailContent(props) {
-    const [ isLoading, setIsLoading ] = useState(true)
-    const [ state, setstate ] = useState([])
-    const url = 'http://itransportindex.com:4500/api/acupunctures'
-    const [ error , seterror ] = useState(false)
-    const [ handleErr , sethandleErr ] = useState(1)
     const [activeNav , setactiveNav ] = useState("Profile")
-    
-    useEffect(()=>{
-        const controller = new AbortController();
-        const signal = controller.signal
-        
-            if(handleErr === 1){
-                axios.get(url,{signal: signal})
-                .then((res)=>{
-                    setstate(res.data)
-                    setIsLoading(false)
-                    sethandleErr(0)
-                    console.log("hello")
-    
-                } )
-                .catch((err)=> seterror(true))
-            }
-        
-        return()=>{
-            controller.abort()
-        }
-    },[])
-
-    const modelData = state.filter((item)=> item.name.includes(props.name.slice(0,5))).map((item)=>
+    const { isLoading, state, error } = props
+    const context = useContext(UserContext)
+    const params = context.state.params
+    const modelData = state.filter((item)=> item.name.includes(params.slice(0,5))).map((item)=>
     <ul>
     <li className="myliststyle"><CheckIcon className="mycustomliststyle" />English : {item.english}</li>
     <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Korean : {item.korean}</li>
@@ -86,7 +61,7 @@ function BlogDetailContent(props) {
         <>
             <div className="card-item blog-card border-bottom-0">
                 <div className="">
-                    <Typography variant="h2">{props.name}</Typography>
+                    <Typography variant="h2">{params}</Typography>
                     <div className="headerborder"></div>
                 </div>
                 <br />
@@ -97,7 +72,7 @@ function BlogDetailContent(props) {
                     /
                     <Link to="/acupuncture"><Typography variant="h6" style={{fontSize:"14px", margin:"auto 1em"}}>Acupuncture</Typography></Link>
                     /
-                    <Typography variant="h6" style={{fontSize:"14px", margin:"auto 1em"}}>{props.name}</Typography>
+                    <Typography variant="h6" style={{fontSize:"14px", margin:"auto 1em"}}>{params}</Typography>
                 </div>
                 <div className="card-content pl-0 pr-0 pb-0">
                             <div style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
@@ -117,7 +92,14 @@ function BlogDetailContent(props) {
                                 <Typography variant="h6">
                                     
                                     <div style={{ float:"right" }}> <QRCode value="hello" /></div>
-                                    {modelData}
+                                    
+                                    <div style={isLoading ? {display:"block", textAlign:"center"}: {display:"none"}}>
+                                        <Typography variant="h5">Loading...</Typography>
+                                    </div>
+                                    {/* {modelData} */}
+                                    <div style={error ? {display:"block", textAlign:"center"}: {display:"none"}}>
+                                        <Typography variant="h6">An Error Occured While Loading Data...</Typography>
+                                    </div>
                                 </Typography>
                             </div>
                                 <div style={ activeNav === 'Topic and Comments' ? { display: "block" } : { display : "none" }}>
@@ -161,4 +143,4 @@ function BlogDetailContent(props) {
     );
 }
 
-export default BlogDetailContent;
+export default withHOC(React.memo(BlogDetailContent));
