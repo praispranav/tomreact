@@ -12,6 +12,7 @@ import QRCode from "react-qr-code"
 import CheckIcon from "@material-ui/icons/Check"
 import withHOC from "./withHOC"
 import { UserContext } from "../../App"
+import NavigateNext from '@material-ui/icons/NavigateNext';
 
 const CustomNav = (props) =>{
     return(
@@ -34,47 +35,37 @@ const CustomNav = (props) =>{
 
 function BlogDetailContent(props) {
     const [activeNav , setactiveNav ] = useState("Profile")
-    const { isLoading, state, error } = props
+    const { isLoading, state, error, name } = props
     const context = useContext(UserContext)
-    const params = context.state.params
-    const modelData = state.filter((item)=> item.name.includes(params.slice(0,5))).map((item)=>
-    <ul>
-    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />English : {item.english}</li>
-    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Korean : {item.korean}</li>
-    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Japanese : {item.japanese}</li>
-    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Vietnamese : {item.vietnamese}</li>
-    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />PhySical Location : {item.physicalLocation}</li>
-    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Five Elements : {item.fiveElement}</li>
-    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Horary Cycle : {item.horarycycle}</li>
-    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Functionality : {item.functionality}</li>
-    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Name : {item.name}</li>
-    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />PinyIn : {item.pinyin}</li>
-    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Meridian : {item.meridian}</li><br/>
-    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Element : {item.element}</li>
-    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Indication : {item.indication}</li>
-    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Caution : {item.caution} </li>
-    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Notes : {item.notes}</li>
-    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Video Link : {item.videoLink}</li>
-    </ul>    
-    )
-    return (
-        <>
-            <div className="card-item blog-card border-bottom-0">
-                <div className="">
-                    <Typography variant="h2">{params}</Typography>
-                    <div className="headerborder"></div>
-                </div>
-                <br />
-                <br />
-                <div className="breadcrumb">
 
-                    <Link to="/"><Typography variant="h6" style={{fontSize:"14px", margin:"auto 1em"}}>Home</Typography></Link>
-                    /
-                    <Link to="/acupuncture"><Typography variant="h6" style={{fontSize:"14px", margin:"auto 1em"}}>Acupuncture</Typography></Link>
-                    /
-                    <Typography variant="h6" style={{fontSize:"14px", margin:"auto 1em"}}>{params}</Typography>
-                </div>
-                <div className="card-content pl-0 pr-0 pb-0">
+    const modelData = state.filter((item)=> item.name.includes(name.slice(0,5))).map((item)=>
+
+
+    <div><ul>
+    {/* <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Name :</li> */}
+    <div className="">
+        <Typography variant="h4">{item.name}</Typography>
+        <div className="headerborder"></div>
+    </div>
+    <br />
+    <br />
+    <div className="breadcrumb" style={{ display:"flex", alignItems:"center"}}>
+        <Link to="/"><Typography variant="h6" style={{fontSize:"14px", margin:"auto 1em"}}>Home</Typography></Link>
+        /
+        <Link to="/acupuncture"><Typography variant="h6" style={{fontSize:"14px", margin:"auto 1em"}}>Acupuncture</Typography></Link>
+        /
+        <Typography variant="h6" style={{fontSize:"14px", margin:"auto 1em"}}>{name}</Typography>
+    </div>
+    <Typography variant="h4" style={{color:"rgb(100,100,100)"}}>Epithet</Typography><br />
+        <div className="qrcode"> <QRCode value={`/acupunture/${name}`} size="110" /></div>
+                                    
+    
+    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />PinyIn : {item.pinyin}</li>
+    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />English : {item.english}</li>
+    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Japanese : {item.japanese}</li>
+    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Korean : {item.korean}</li>
+    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Vietnamese : {item.vietnamese}</li>
+                <br />
                             <div style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
                                 <div style={{display:"inline-flex",width:"80vw",overflowX:"auto", textAlign:"center"}} className="custom-scroll">
                                         <CustomNav name="Profile" activenav={activeNav} handleClick={(event)=> setactiveNav(event)} />
@@ -84,19 +75,37 @@ function BlogDetailContent(props) {
                                         <CustomNav name="Reference" activenav={activeNav} handleClick={(event)=> setactiveNav(event)} />
                                         <CustomNav name="Notes" activenav={activeNav} handleClick={(event)=> setactiveNav(event)} />
                                 </div>
-
                             </div>
+                <br />
+    </ul>
+    <ul style={ activeNav == 'Profile' ? {display:"block"}: {display:"none"}}>            
+    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />PhySical Location : {item.physicalLocation}</li>
+    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Five Elements : {item.fiveElement}</li>
+    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Horary Cycle : {item.horarycycle}</li>
+    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Functionality : {item.functionality}</li>
+    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Meridian : {item.meridian}</li><br/>
+    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Element : {item.element}</li>
+    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Indication : {item.indication}</li>
+    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Caution : {item.caution} </li>
+    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Notes : {item.notes}</li>
+    <li className="myliststyle"><CheckIcon className="mycustomliststyle" />Video Link : {item.videoLink}</li>
+    </ul>    </div>
+    )
+    return (
+        <>{console.log(props)}
+            <div className="card-item blog-card border-bottom-0">
+                
+                
+                <div className="card-content pl-0 pr-0 pb-0">
+                            
                             <br />
-                            <div style={ activeNav == 'Profile' ? {display:"block"}: {display:"none"}}><br />
-                                <Typography variant="h4" style={{color:"rgb(100,100,100)"}}>Epithet</Typography><br />
-                                <Typography variant="h6">
-                                    
-                                    <div style={{ float:"right" }}> <QRCode value="hello" /></div>
+                            <div><br />
+                            <Typography variant="h6">
                                     
                                     <div style={isLoading ? {display:"block", textAlign:"center"}: {display:"none"}}>
                                         <Typography variant="h5">Loading...</Typography>
                                     </div>
-                                    {/* {modelData} */}
+                                    {modelData}
                                     <div style={error ? {display:"block", textAlign:"center"}: {display:"none"}}>
                                         <Typography variant="h6">An Error Occured While Loading Data...</Typography>
                                     </div>
@@ -125,19 +134,11 @@ function BlogDetailContent(props) {
                                     { display : "flex", justifyContent: "space-around", marginTop:"30vh", flexDirection:"column", alignItems:"center", textAlign:"center"  }}>
                                         <Typography variant="h4">No Data Found</Typography>
                                 </div>
-
-                    <div className="section-block margin-top-30px margin-bottom-30px"></div>
-                    <div className="tag-items d-flex justify-content-between">
-
-                        <BlogTags taglists={sectiondata.blogDetails.bltags.lists} title={sectiondata.blogDetails.bltags.title} />
-
-                        <BlogShare />
-
-                    </div>
-                    <div className="section-block margin-top-30px margin-bottom-50px"></div>
-                    
-                    
                 </div>
+            </div><br /><br />
+            <div style={{ display:"flex", justifyContent:"space-evenly"}}>
+                <div><NavigateNext style={{transform:"rotateY(180deg)"}} className="mynavcon"/></div>
+                <div><NavigateNext className="mynavcon"/></div>
             </div>
         </>
     );

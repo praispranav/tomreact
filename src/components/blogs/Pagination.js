@@ -14,7 +14,7 @@ function Pagination() {
     }
     const color = { background: "linear-gradient(to bottom right,red, pink)", color: "white", boxShadow: "2px 2px 4px rgb(200,200,200)" }
     return (
-        <>{console.log("active Filter : " , activeFilter)}
+        <>
             <div className="pagination-wrapper mt-4 text-center">
                 <ul className="pagination-list mycustomlist">
                     <li style={activeFilter == 'all' ? color : null} onClick={()=> handleClick('all')}>All</li>

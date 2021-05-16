@@ -1,5 +1,5 @@
 
-import React,{ useContext } from 'react';
+import React,{useState,useEffect, useContext } from 'react';
 import { UserContext } from "../../App"
 import BlogFullWidthArray from "./BlogFullWidthArray"
 import MeridianHandler from "./MeridianHandler"
@@ -34,21 +34,18 @@ function BlogFullWidthItems(props){
     
     const FilterActive = context.state.activeFilter === 'all' ? Array : FilteredArray
     //test
-
-    var newList = []
-    state.forEach((value)=>{
-        if(newList.indexOf(value.meridian) == -1){
-            newList.push(value.meridian)
-        }
-    })
+    // const [ active , setactive ] = useState(true)
+        const newList = []
+        state.forEach((value)=>{
+            if(newList.indexOf(value.meridian) == -1){
+                newList.push(value.meridian)
+            }
+        })
+    
 
     return(
         <>
-        <div style={{position:"fixed", right:'10px', top:"20%"}}>
-            
-            <MeridianHandler meridian={newList} />
-        </div>
-        
+        <MeridianHandler meridian={newList} /><br />
         <div style={ isLoading ? {display:"block", textAlign:"center"} : {display:"none"}}>
                 <div className="loading"></div>
             <h1>Loading .....</h1>

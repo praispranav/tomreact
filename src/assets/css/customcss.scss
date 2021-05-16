@@ -127,8 +127,27 @@
     width:100%;
     border:1px solid white;
 }
+.qrcode{
+    float:right;
+}
 
+.mynavcon{
+    font-size:30px;
+    border:2px solid red; 
+    color:red;background:white; 
+    border-radius:50%;
+    &:hover{
+        background: red;
+        color: white;
+    }
+}
 @media screen and (max-width: 500px) {
+    .qrcode{
+        float:none;
+        text-align:center;
+        margin-top:2em;
+        margin-bottom:2em;
+    }
     .mycustominput{
         margin-left:0px;
     }
@@ -250,9 +269,41 @@
         border:1px solid red;
     }
     50%{
-        border: 7px dotted black;
+        border: 5px solid blue;
+    }
+    60%{
+        border: 3px solid red;
     }
     100%{
-        border:1px solid red;
+        border:1px solid rgb(16, 15, 15);
     }
 }
+
+body::-webkit-scrollbar{
+    width:0.6em;
+    color:black;
+}
+body::-webkit-scrollbar-track{
+    background: rgba(255, 255, 255, 0);
+    color: black;
+}
+ 
+body::-webkit-scrollbar-thumb {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9),rgb(255,255,255));
+    border-radius: 10px;
+  }
+
+.mycustomscroll::-webkit-scrollbar{
+    width:0.6em;
+    color:black;
+}
+.mycustomscroll::-webkit-scrollbar-track{
+    background: rgba(255, 255, 255, 0);
+    color: black;
+}
+ 
+.mycustomscroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9),rgb(255,255,255));
+    border-radius: 10px;
+  }
+

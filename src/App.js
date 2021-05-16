@@ -6,7 +6,7 @@ import ScrollReveal from './utils/ScrollReveal';
 
 // Layouts
 import LayoutDefault from './layouts/LayoutDefault';
-import Forums from './pages/Forums';
+// import Forums from './pages/Forums';
 
 // Pages
 import Home from "./pages/homes/Home";
@@ -36,11 +36,11 @@ import Home from "./pages/homes/Home";
 // import Faq from "./pages/FAQ";
 // import Contact from "./pages/Contact";
 // import RecoverPassword from "./pages/RecoverPassword";
-import BlogFullWidth from "./pages/blogs/BlogFullWidth";
+import BlogFullWidth from "./pages/blogs/acupunture";
 // import BlogGrid from "./pages/blogs/BlogGrid";
 // import BlogLeftSidebar from "./pages/blogs/BlogLeftSidebar";
 // import BlogRightSidebar from "./pages/blogs/BlogRightSidebar";
-import BlogDetail from "./pages/blogs/BlogDetail";
+import BlogDetail from "./pages/blogs/acupoint";
 // import Login from "./pages/Login";
 // import SignUp from "./pages/SignUp";
 // import Error from "./pages/Error";
@@ -53,12 +53,15 @@ const initialState = {
  meridian: [],
   activeNav:"Profile",
   point: {},
-  params: ''
+  params: '',
+  isOpen: false
 
 }
 
 const reducer = (state, action)=>{
   switch(action.type){
+    case 'isopen':
+      return { ...state, isOpen: action.value}
     case 'filter':
       return { ...state, activeFilter : action.value}
     case 'meridian':
@@ -70,27 +73,6 @@ const reducer = (state, action)=>{
     case 'params':
       return { ...state, params: action.value}
   }
-}
-
-const UseLess = (props) =>{
-  const context = useContext(UserContext)
-  const h = 1
-
-  const myF =()=>{
-    context.dispatch({type:"params", value: props.name })
-  }
-  useEffect(() =>{
-   setTimeout(() => {
-      myF()
-    }, 100);
-    return()=>{
-      clearTimeout()
-    }
-  },[h])
-  return(
-    <div>
-    </div>
-  )
 }
 
 const App = () => {
@@ -140,8 +122,7 @@ const App = () => {
               <AppRoute path="/recover" component={RecoverPassword} /> */}
               <AppRoute path="/acupuncture/:name" component={(event)=> 
                 <div>
-                  <BlogDetail />
-                  <UseLess name={event.match.params.name} />
+                  <BlogDetail name={event}/>
                   </div>} />
               <AppRoute path="/acupuncture" component={BlogFullWidth} />
 
@@ -150,7 +131,7 @@ const App = () => {
               <AppRoute path="/blog-right-sidebar" component={BlogRightSidebar} />
               <AppRoute path="/login" component={Login} />
               <AppRoute path="/sign-up" component={SignUp} /> */}
-              <AppRoute path="/forums" component={Forums} />
+              {/* <AppRoute path="/forums" component={Forums} /> */}
               <AppRoute component={Error} />
           </Switch>
         )} />

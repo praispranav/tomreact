@@ -5,10 +5,7 @@ import BlogSidebar from "../../components/sidebars/BlogSidebar";
 import BlogFullWidthItems from "../../components/blogs/BlogFullWidthItems";
 import MeridianHandler from "../../components/blogs/MeridianHandler";
 import Pagination from "../../components/blogs/Pagination";
-// import MeridianHandler from "./MeridianHandler"
-// import ListingDetailsComments from "../contact/ListingDetailsComments";
 import ListingDetailsComments from "../../components/contact/ListingDetailsComments";
-// import BlogCommentFields from "./BlogCommentFields";
 import BlogCommentFields from "../../components/blogs/BlogCommentFields";
 import sectiondata from "../../store/store";
 
@@ -21,11 +18,26 @@ import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 
 import flag1 from "../../assets/images/custom/flag1.jpg"
+import {motion } from "framer-motion"
 import { UserContext } from '../../App';
+
+
+const Red = () =>{
+    const context = useContext(UserContext)
+    return(
+        <div
+            style={{}} className="sidefilter">
+            <Typography variant="body1"><small>{context.state.activeFilter.length > 3? 
+                context.state.activeFilter : "Hand Yin Lung Meridian (LU) (手太阴肺经穴, 手太陰肺經)" }</small></Typography>
+        </div>
+    )
+}
+
 
 function BlogFullWidth() {
     const context = useContext(UserContext)
     const [ state, setstate ] = useState(false)
+    // const newList = context.state.meridian
     return (
         <main className="blog-fullwidth-page">
             {/* Header */}
@@ -55,7 +67,20 @@ function BlogFullWidth() {
                             
                             <hr />
                             <br />
-                            <NewsLetter />
+                            <div style={{}}>
+                                <Typography variant="h5">Meridians : </Typography><br />
+                                <div onMouseEnter={()=> context.dispatch({type:"isopen", value: true})} 
+                                    style={ context.state.isOpen ? {display:"none"}: {display:"block"}} 
+                                    onClick={()=> context.dispatch({type:"isopen", value: true})}>
+                                    <Red />
+                                </div>
+                                <div style={{textAlign:"right"}}>
+                                            <button className="theme-btn border-0" type="submit" value="submit">
+                                                <i className="la la-paper-plane"></i> Submit
+                                            </button>
+                                </div>
+                            </div>
+
 
                             {/* <NewsLetter newsLetterContent={sectiondata.calltoactions.newsletters} /> */}
 
@@ -130,7 +155,7 @@ function BlogFullWidth() {
             </section>
 
             {/* Newsletter */}
-
+                                        <NewsLetter />
             {/* Footer */}
             <Footer />
 

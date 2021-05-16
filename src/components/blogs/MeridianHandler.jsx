@@ -28,19 +28,7 @@ const MeridianList = (props) =>{
     )
 }
 
-const Red = () =>{
-    const context = useContext(UserContext)
-    return(
-        <motion.div
-        initial={{ x: 300 }}
-            animate={{ x: 0 }}
-            transition={{ duration: 2 }}
-            style={{}} className="sidefilter">
-            <Typography variant="body1"><small>{context.state.activeFilter.length > 3? 
-                context.state.activeFilter : "Hand Yin Lung Meridian (LU) (手太阴肺经穴, 手太陰肺經)" }</small></Typography>
-        </motion.div>
-    )
-}
+
 
 function MeridianHandler(props) {
     const context = useContext(UserContext)
@@ -55,21 +43,26 @@ function MeridianHandler(props) {
     
     return (
    <>
-    <div onMouseEnter={()=> setisOpen(true)} style={ isOpen ? {display:"none"}: {display:"block"}} onClick={()=> setisOpen(true)}>
-        <Red />
-    </div>
-    <div style={ isOpen ? {
-            display:"block", 
+    
+    <div className="mycustomscroll" style={ context.state.isOpen ? {
+            display:"block",
+            width:"80vw",
+            position:"fixed",
+            top:"20%",
+            maxWidth:"600px",
+            right:"10%",
             background:"white", 
             overflowY:"auto", 
             height:"50vh", 
-            boxShadow:"0px 0px 10px rgb(230,230,230)"}
+            boxShadow:"0px 0px 30px rgb(220,220,230)"}
 
         :{display:"none"}}
-        onMouseLeave={()=> setisOpen(false)}>
+
+        onMouseLeave={()=> context.dispatch({type:"isopen",value:false})}>
             
         <div style={{textAlign:"right", paddingRight:"1em", paddingTop:"10px"}} 
-        onClick={()=> setisOpen(false)}>
+            onClick={()=> context.dispatch({type:"isopen",value:false})}>
+            
             <CloseIcon fontSize="large" />
         </div>
         {Array}

@@ -2,42 +2,34 @@ import React,{ useState,useEffect, useContext } from 'react';
 import { UserContext } from "../../App"
 import axios from "axios"
 
-const withHOC = (WrappedComponent, params) =>{
+const withHOC = (WrappedComponent) =>{
     const NewComponent = (props) =>{
         const context = useContext(UserContext)
         const [ isLoading, setIsLoading ] = useState(true)
         const [ state, setstate ] = useState([])
         const url = 'http://itransportindex.com:4500/api/acupunctures'
         const [ error , seterror ] = useState(false)
-        
-        const stateUpdate = ()=>{
-            if(isLoading === true ){
-                axios.get(url)
-                .then((res)=>{
-                    setstate(res.data)
+        useEffect( ()=>{
+            if(isLoading){
+                async function fetchData(){
+                    const response = await axios.get(url)
+                    setstate(response.data)
                     setIsLoading(false)
-                })
-                .catch((err)=>{
-                    seterror(true)
-                })
+                    console.log("hello")
+                }
+                fetchData()
             }
-        }
-        useEffect(()=>{
-            setTimeout(() => {
-               stateUpdate() 
-            }, 100);
-
             return()=>{
                 setIsLoading(false)
-                clearTimeout()
             }
-        },[url])
-        
+        },[])
+
         return(
             <WrappedComponent isLoading={isLoading}
                                 context={context}
                                 state={state}
-                                error={error} />
+                                error={error}
+                                name={props.name != null ? props.name.match.params.name : null  } />
         )
     }
     return NewComponent

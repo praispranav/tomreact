@@ -23,10 +23,13 @@ function NewsLetter({newsLetterContent}) {
                         <TextField id="standard-basic" label="Subscribe" style={{width:"100%"}}/>
                     </div>
                     <div className="col-lg-3" style={{textAlign:"center"}}>
-                        <Button style={{border:"2px solid white", background:"black",
+                        {/* <Button style={{border:"2px solid white", background:"black",
                             marginLeft:"-20px",marginTop:"1em",
                             color:"white", borderRadius:"30px", padding:"0.6em 1em",
-                            boxShadow:"2px 2px 5px rgb(100,100,100)"}}>Subscribe</Button>
+                            boxShadow:"2px 2px 5px rgb(100,100,100)"}}>Subscribe</Button> */}
+                            <button className="theme-btn border-0" type="submit" value="submit">
+                                <i className="la la-paper-plane"></i> Subscribe
+                            </button>
                     </div>
                 </div>
                 <br />

@@ -13,7 +13,7 @@ import bg from "../../assets/images/custom/bg.jpg"
 const state = {
     breadcrumbimg: breadcrumbimg,
 }
-function BlogDetail(props) {
+function BlogDetail(props,event) {
     return (
         <div>
             {/* Header */}
@@ -25,18 +25,17 @@ function BlogDetail(props) {
             <section className="blog-single-area padding-top-40px padding-bottom-70px">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-8">
+                        <div className="col-lg-12">
                             <BlogDetailContent name={props.name}/>
-                        </div>
-                        <div className="col-lg-4">
-                            <BlogSidebar />
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Newsletter */}
-            <NewsLetter newsLetterContent={sectiondata.calltoactions.newsletters} />
+            <div className="container">
+                <NewsLetter />
+            </div>
 
             {/* Footer */}
             <Footer />
@@ -47,4 +46,4 @@ function BlogDetail(props) {
     );
 }
 
-export default BlogDetail;
+export default React.memo(BlogDetail);
