@@ -6,7 +6,7 @@ import ScrollReveal from './utils/ScrollReveal';
 
 // Layouts
 import LayoutDefault from './layouts/LayoutDefault';
-// import Forums from './pages/Forums';
+import Forums from './pages/Forums';
 
 // Pages
 import Home from "./pages/homes/Home";
@@ -150,7 +150,7 @@ const App = () => {
               <AppRoute path="/blog-right-sidebar" component={BlogRightSidebar} />
               <AppRoute path="/login" component={Login} />
               <AppRoute path="/sign-up" component={SignUp} /> */}
-              {/* <AppRoute path="/forums" component={Forums} /> */}
+              <AppRoute path="/forums" component={Forums} />
               <AppRoute component={Error} />
           </Switch>
         )} />
