@@ -8,34 +8,34 @@ import Footer from "../../components/common/footer/Footer";
 import ScrollTopBtn from "../../components/common/ScrollTopBtn";
 import breadcrumbimg from '../../assets/images/bread-bg.jpg'
 import sectiondata from "../../store/store";
+import bg from "../../assets/images/custom/bg.jpg"
 
 const state = {
     breadcrumbimg: breadcrumbimg,
 }
-function BlogDetail() {
+function BlogDetail(props,event) {
     return (
         <div>
             {/* Header */}
             <GeneralHeader />
 
             {/* Breadcrumb */}
-            <Breadcrumb CurrentPgTitle="Blog Detail" MenuPgTitle="Blog" img={state.breadcrumbimg} />
-
+            <Breadcrumb CurrentPgTitle="Blog Detail" MenuPgTitle="Blog" img={bg} />
+                
             <section className="blog-single-area padding-top-40px padding-bottom-70px">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-8">
-                            <BlogDetailContent />
-                        </div>
-                        <div className="col-lg-4">
-                            <BlogSidebar />
+                        <div className="col-lg-12">
+                            <BlogDetailContent name={props.name}/>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Newsletter */}
-            <NewsLetter newsLetterContent={sectiondata.calltoactions.newsletters} />
+            <div className="container">
+                <NewsLetter />
+            </div>
 
             {/* Footer */}
             <Footer />
@@ -46,4 +46,4 @@ function BlogDetail() {
     );
 }
 
-export default BlogDetail;
+export default React.memo(BlogDetail);

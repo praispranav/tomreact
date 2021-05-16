@@ -1,10 +1,11 @@
 import React,{useContext} from 'react';
-// import { UserContext } from "../../App"
 
 const BlogFullWidthArray = (props) => {
     return (
         <>
-        <div keys={props.keys} 
+        <div 
+            
+            keys={props.keys} 
              className="array">
             {props.name}<br/><br />
             {props.english}
@@ -12,5 +13,6 @@ const BlogFullWidthArray = (props) => {
         </>
     );
 }
+
 
 export default React.memo(BlogFullWidthArray);
