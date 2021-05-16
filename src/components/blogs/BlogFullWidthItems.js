@@ -33,14 +33,13 @@ function BlogFullWidthItems(props){
         </Link> ) : "Loading...." ;
     
     const FilterActive = context.state.activeFilter === 'all' ? Array : FilteredArray
-    //test
-    // const [ active , setactive ] = useState(true)
-        const newList = []
-        state.forEach((value)=>{
-            if(newList.indexOf(value.meridian) == -1){
-                newList.push(value.meridian)
-            }
-        })
+
+    const newList = []
+    state.forEach((value)=>{
+        if(newList.indexOf(value.meridian) == -1){
+            newList.push(value.meridian)
+        }
+    })
     
 
     return(

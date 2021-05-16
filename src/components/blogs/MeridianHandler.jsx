@@ -32,14 +32,14 @@ const MeridianList = (props) =>{
 
 function MeridianHandler(props) {
     const context = useContext(UserContext)
-    const [ isOpen , setisOpen] = useState(false)
     const handleClick =(event)=>{
         context.dispatch({type:"filter", value:event})
-        setisOpen(false)
+        context.dispatch({type:"isopen", value: false})
     }
 
     const Array = props.meridian.map((item)=> <MeridianList key={item} handleClick={(event)=> 
         handleClick(event)} meridian={item} />)
+
     
     return (
    <>
